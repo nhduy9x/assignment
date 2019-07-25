@@ -90,7 +90,7 @@
 							</div>
 							<div class="row">
 								@foreach($product as $all)
-								<div class="col-sm-3">
+								<div class="col-sm-3" style="margin-bottom: 5px">
 									<div class="single-item">
 										<div class="single-item-header">
 											<a href="product.html"><img src="{{asset($all->image)}}" alt="" width="320" height="270"></a>

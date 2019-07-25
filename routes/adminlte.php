@@ -14,7 +14,7 @@ Route::group(['prefix'=>'post-cate'],function(){
 	Route::get('uploadcate/{id}', 'Admin\CatePostController@cateup')->name('sua.cate');
 	Route::post('savecate', 'Admin\CatePostController@catesave')->name('save.cate');
 });
-Route::group(['prefix'=>'p-cate'],function(){
+Route::group(['prefix'=>'product-cate'],function(){
 	Route::get('catelist', 'Admin\CateProductController@catelist')->name('list.cate-p');
 	Route::get('addcate', 'Admin\CateProductController@cateadd')->name('add.cate-p');
 	Route::get('deletecate/{id}', 'Admin\CateProductController@catedelete')->name('xoa.cate-p');

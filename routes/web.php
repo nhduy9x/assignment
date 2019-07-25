@@ -13,9 +13,9 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('asss', 'HomeController@indexs')->name('homes');
-Route::group(['prefix'=>'produc'],function(){
-Route::get('/{slud}', 'HomeController@detail')->name('detail');
-Route::get('/','HomeController@product')->name('product');
+Route::group(['prefix'=>'product'],function(){
+Route::get('cate/{slud}', 'HomeController@detail')->name('detail');
+Route::get('/{slug?}','HomeController@product')->name('danhmuc');
 });
 
 // Route::get('/',function(){

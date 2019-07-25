@@ -38,18 +38,7 @@ class HomeController extends Controller
     	// // dd($id);
     	return view('Home.homepage',compact('product'));
     }
-    // public function indexs(Request $request){
-    //   if($request->name ==null){
-    //         $product=Product::paginate(20);
-    //     }else{
-    //         $product=Product::where('name','like', "%$request->name%")->get();
-           
-    //         dd($request->name);
-    //         echo "<pre>";
-    //         var_dump($product);die();
-    //     }
-    //     return view('welcome');
-    // }
+ 
     public function detail($slug){
         $detail=Product::where('slug',$slug)->first();
         $all=Product::skip(2)->take(3)->get();
@@ -58,10 +47,20 @@ class HomeController extends Controller
         // var_dump($product);die();
         return view('Home.product_detail',compact('detail','all','a4'));
     }
-    public function product(){
-        $all=Product::orderBy('updated_at','desc')->paginate(4);
-        $top=Product::orderBy('unit_price','desc')->paginate(12);
-        $id=Product::where('product_id',1)->get();
-        return view('home.product',compact('all','top','id'));
+    public function product($slug=null){
+        $cates=ProductCategory::all();
+        if(empty($slug)){
+           $all=Product::orderBy('updated_at','desc')->paginate(4);
+            $top=Product::orderBy('unit_price','desc')->paginate(12);
+           return view('home.product',compact('all','top','cates'));
+            
+        }else{
+            $cate=ProductCategory::where('slug',$slug)->first();
+            $id=$cate->id;
+            $products=Product::where('product_id',$id)->paginate(20);
+             
+        }
+        return view('home.product',compact('products','cate','cates'));
+         
     }
 }

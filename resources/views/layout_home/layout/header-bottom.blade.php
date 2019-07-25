@@ -5,11 +5,11 @@
 				<nav class="main-menu">
 					<ul class="l-inline ov">
 						<li><a href="{{route('home')}}">Trang chủ</a></li>
-						<li><a href="{{route('product')}}">Sản phẩm</a>
+						<li><a href="{{route('danhmuc')}}">Sản phẩm</a>
 							
 							<ul class="sub-menu">
 								@foreach($menus as $all)
-								<li><a href="product_type.html">{{$all->name}}</a></li>
+								<li><a href="{{route('danhmuc',$all->slug)}}">{{$all->name}}</a></li>
 								@endforeach
 							</ul>
 							
